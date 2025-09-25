@@ -208,9 +208,3 @@ This XML file does not appear to have any style information associated with it. 
 <lastupdate value="2025-09-25T04:05:09"/>
 </current>
 
-Stringin cities together with group
-
-https://api.openweathermap.org/data/2.5/weather?group?id=5128581,1850147,5809844&&appid=b5d6bf68e44abc27818a5df1fbab25b9&units=imperial&lang=es&&mode=xml
-https://api.openweathermap.org/data/2.5/group?id=5128581,1850147,5809844&appid=b5d6bf68e44abc27818a5df1fbab25b9&units=metric
-
-https://api.openweathermap.org/data/2.5/group?id=5128581,1850147,5809844&appid=YOUR_API_KEY&units=metric
