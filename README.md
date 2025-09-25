@@ -208,3 +208,9 @@ This XML file does not appear to have any style information associated with it. 
 <lastupdate value="2025-09-25T04:05:09"/>
 </current>
 
+
+Week 1 Super Project
+
+I created morning_brief.py to utilize OpenWeather API, News API and OpenAI API calls create a daily brief to summarize the Seattle weather, top 5 lcoal news stories, top 3 global news and a banking industry summary currated by OpenAI. 
+
+I then used task scheduler to send this email via sendgrid at 645a every day. lets see if it works!
