@@ -69,3 +69,17 @@
 **Finish Log**
 > I hardened the CLI: added session reuse, retries, and timeouts, fixed unit labels, and verified friendly errors. Ready for daily use.
 
+### Day 10 — CLI Flags + Structured Logging
+
+**What I built**
+- Added `argparse` flags: `--units`, `--timeout`, `--retries`, `--backoff`, and `--cities-file`.
+- Wired a tuned `requests.Session` (retries + backoff) from `http_utils.py`.
+- Rotating file logs at `logs/weather-cli.log` with timestamps.
+
+**What I learned**
+- `argparse` turns command text into validated variables (with `--help` for free).
+- Sessions reuse connections; retries/backoff make the CLI resilient.
+- Timeouts prevent hangs; rotating logs give lightweight observability.
+
+**Finish Log**
+> I turned the script into a real CLI: configurable flags, robust HTTP, and a run log.
