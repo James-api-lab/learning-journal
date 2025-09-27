@@ -20,7 +20,17 @@
 **Finish Log**
 > I refactored the weather call into a reusable function and built a CLI that prints live temps for any city. Env loading and paths are now reliable.
 
-**Next up (Day 7)**
-- Add friendly errors to `get_weather` (404 city not found, 401 bad key).
-- Optional: `weather_variations.py` looping Seattle/London/Tokyo to demo error handling.
-- Stretch: a tiny daily logger that appends date/city/temp to a CSV for trend charts later.
+### Day 7 — Weather CLI + Daily Logger
+
+**What I built**
+- Finalized a Weather CLI that accepts city args and prompts with no args.
+- Added `log_weather_daily.py` that appends one row per city per day into `data/weather_log.csv`, with simple de-dupe.
+
+**What I learned**
+- Small, focused functions make CLIs and schedulers trivial to build on.
+- Explicit `.env` loading with `Path(__file__).with_name(".env")` removes “where am I running?” issues.
+- Appending + de-dupe is enough to create reliable time-series data for charts.
+
+**Finish Log**
+> I shipped a working CLI and a daily logger that builds a weather history automatically.
+
