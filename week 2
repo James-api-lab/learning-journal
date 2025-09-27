@@ -52,3 +52,20 @@
 
 **Finish Log**
 > Generated and committed `weather_chart.png` from my daily CSV; chart now renders clearly even with sparse data.
+
+### Day 9 — Make It Production-ish (Sessions, Retries, Timeouts)
+
+**What I built**
+- `http_utils.make_session()` to create a `requests.Session` with retries + exponential backoff.
+- Updated `weather_cli.py` to use a shared session, a 10s timeout, clearer network/auth/404 errors, and correct °F/°C labels.
+
+**What I learned**
+- **Sessions** reuse connections → faster and less flaky than fresh `requests.get()` each time.
+- **Retries + backoff** auto-handle temporary 429/500/503 errors.
+- **Timeouts** prevent scripts from hanging indefinitely.
+- Printing the right unit label matters (imperial vs metric).
+- Avoid DEBUG logs in prod—they can leak secrets (keys in URLs).
+
+**Finish Log**
+> I hardened the CLI: added session reuse, retries, and timeouts, fixed unit labels, and verified friendly errors. Ready for daily use.
+
