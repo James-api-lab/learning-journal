@@ -34,3 +34,21 @@
 **Finish Log**
 > I shipped a working CLI and a daily logger that builds a weather history automatically.
 
+### Day 8 — Visualize & Share (Charts)
+
+**What I built**
+- `chart_weather.py` that reads `data/weather_log.csv` and saves `data/weather_chart.png`.
+- Tweaked plotting to show single points (scatter) and tightened axes so early data is visible.
+
+**What I learned**
+- One point per city looks “empty” on a line chart; show a dot and tighten the x/y range.
+- Matplotlib basics: `plt.plot` vs `plt.scatter`, date formatting with `matplotlib.dates`, and setting axis limits.
+- File paths matter: writing/reading from a consistent `data/` folder makes scripts chain nicely.
+
+**Snags & fixes**
+- Empty-looking plot → added scatter for single-point series + axis padding.
+- `NameError: plt not defined` → restored `import matplotlib.pyplot as plt` and `matplotlib.dates`.
+- File name mismatch (`chart-weather.py` vs `chart_weather.py`) → ran the correct path.
+
+**Finish Log**
+> Generated and committed `weather_chart.png` from my daily CSV; chart now renders clearly even with sparse data.
