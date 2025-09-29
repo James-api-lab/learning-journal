@@ -114,3 +114,20 @@
 **Finish Log**
 > Daily logging now runs automatically; the chart updates cleanly from a consistent, unit-locked CSV.
 
+
+### Day 13 — Package + One-Command Runner
+
+**What I built**
+- Packaged the app with `pyproject.toml` and added a console script: `weather`.
+- Created `weather-daily` runner to log then generate the chart in one command.
+- Cleaned repo structure (all Python under `week2/`, ignore generated logs/data).
+
+**What I learned**
+- Entry points map `command → module:function` so the CLI is importable/testable.
+- Editable installs (`pip install -e .`) let me iterate without reinstalling.
+- Keeping generated artifacts out of Git keeps history clean and diffs small.
+
+**Finish Log**
+> I can now run `weather …` anywhere in my venv and `weather-daily` to log + chart in one step.
+
+
