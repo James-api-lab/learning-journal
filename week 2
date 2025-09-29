@@ -83,3 +83,34 @@
 
 **Finish Log**
 > I turned the script into a real CLI: configurable flags, robust HTTP, and a run log.
+
+### Day 11 — Machine-Readable Output + Controlled Logging
+
+**What I built**
+- `--json` flag: prints one JSON object per city.
+- `--csv-out` with `.env` default (`CSV_OUT=data/weather_log.csv`): append this run to the main log.
+- De-dupe when writing to `weather_log.csv` (skip same `(date, city)`).
+- Chart script now reads `temp` + `units` and auto-labels °C/°F.
+
+**What I learned**
+- Separate data from presentation: same fetch can output text or JSON.
+- Env-driven defaults (CSV_OUT/UNITS) keep commands short but configurable.
+- De-dupe at the write layer prevents messy time series.
+
+**Finish Log**
+> I added JSON output and CSV append with duplicate protection, and confirmed the chart auto-labels units from the log.
+
+
+### Day 12 — Automation
+
+**What I built**
+- Scheduled `log_weather_daily.py` via Windows Task Scheduler using my venv’s Python.
+- Locked units in `.env` and set `CSV_OUT` to the main log.
+
+**What I learned**
+- Use absolute paths + “Start in” so scheduled jobs find files/venv.
+- Keep generated data out of Git; code-only commits are cleaner.
+
+**Finish Log**
+> Daily logging now runs automatically; the chart updates cleanly from a consistent, unit-locked CSV.
+
