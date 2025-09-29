@@ -1,38 +1,3 @@
-### Day 6 — Refactor into Functions (and make it usable)
-
-**What I built**
-- Created a working `weather_cli.py` that accepts city names as CLI args.
-- Centralized `.env` loading next to the script with `Path(__file__).with_name(".env")` so it runs reliably from any folder.
-- Updated `README.md` with exact run commands from root vs inside `week2/`.
-
-**What I learned**
-- **Functions → reuse**: wrapping API logic in `get_weather(city)` lets me call it from a CLI, scheduler, or later a web endpoint.
-- **Env loading matters**: `load_dotenv()` depends on the *working directory*; pointing to the file explicitly avoids “missing key” bugs.
-- **Paths & shells**: PowerShell ≠ Unix. Use `New-Item`/`Set-Content` instead of `mkdir -p`/`printf`. Also, `cd` only moves into folders (not files).
-- **Run context**: VS Code’s “Run” uses an absolute path; terminal commands are relative to the current folder—hence `python week2/...` vs `python weather_one_city.py`.
-- **Git paths**: `git add` paths are relative to the current directory. Being inside `week2/` means don’t prefix `week2/` again.
-
-**Snags & fixes**
-- Error: “Missing OPENWEATHER_API_KEY” → fixed by explicitly loading `week2/.env` with `Path(__file__).with_name(".env")`.
-- Error: file not found when running from repo root → ran with the correct relative path (`python week2/weather_one_city.py`) or `cd week2` first.
-- SyntaxError from `@'`…`'@` → realized those are PowerShell here-string markers and must not end up in `.py` files.
-
-**Finish Log**
-> I refactored the weather call into a reusable function and built a CLI that prints live temps for any city. Env loading and paths are now reliable.
-
-### Day 7 — Weather CLI + Daily Logger
-
-**What I built**
-- Finalized a Weather CLI that accepts city args and prompts with no args.
-- Added `log_weather_daily.py` that appends one row per city per day into `data/weather_log.csv`, with simple de-dupe.
-
-**What I learned**
-- Small, focused functions make CLIs and schedulers trivial to build on.
-- Explicit `.env` loading with `Path(__file__).with_name(".env")` removes “where am I running?” issues.
-- Appending + de-dupe is enough to create reliable time-series data for charts.
-
-**Finish Log**
-> I shipped a working CLI and a daily logger that builds a weather history automatically.
 
 ### Day 8 — Visualize & Share (Charts)
 
