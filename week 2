@@ -130,4 +130,18 @@
 **Finish Log**
 > I can now run `weather …` anywhere in my venv and `weather-daily` to log + chart in one step.
 
+### Day 14 — Faster runs + smarter calls
+
+**What I built**
+- Parallel fetch with `--max-workers` (ThreadPoolExecutor) for multiple cities.
+- Same-day, per-units cache with `--cache-day` in `data/cache/YYYY-MM-DD_units.json`.
+- Kept CSV de-dupe and logging logic intact.
+
+**What I learned**
+- Weather calls are I/O-bound; threads overlap network waits to cut wall time.
+- requests.Session isn’t thread-safe; use one per worker.
+- Tiny JSON caches slash repeat work and help stay under rate limits.
+
+**Finish Log**
+> Parallelized multi-city fetches and added a same-day cache. Re-runs are near-instant and API usage is lower.
 
