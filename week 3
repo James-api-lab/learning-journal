@@ -1,1 +1,19 @@
+# Week 3 – Day 1
+I set up my first Node.js project with pnpm, confirmed I can load my API key from .env, and built scripts to fetch weather data. I started with one city, then looped through multiple, and finished by adding CLI flags with yargs. 
+This feels like the JavaScript mirror of what I did in Python last week.
+
+accomplished for W3D1
+
+✅ Installed Node.js & pnpm
+✅ Initialized a Node project
+✅ Verified .env works with your OpenWeather key
+✅ Wrote and ran JavaScript scripts:
+
+weather_one_city.js → fetch 1 city’s weather
+weather_variations.js → loop through multiple cities
+weather_flags.js → pass cities from the CLI, control units with a flag (and .env default)
+
+✅ Pushed everything to GitHub under API-Lab org
+
+I will admit, I am lost with the node.js language. I really struggled understanding what was going here. 
 
