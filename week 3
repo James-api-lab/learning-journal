@@ -17,3 +17,35 @@ weather_flags.js → pass cities from the CLI, control units with a flag (and .e
 
 I will admit, I am lost with the node.js language. I really struggled understanding what was going here. 
 
+
+# Learning Journal — Week 3 (Node.js)
+
+---
+
+## Day 16 (W3D2)
+I extended my CLI tool with new outputs. Added `--json` to console, `--json-out` to write JSON to a file, and `--csv-out` to export data to CSV. Enhanced the fetch to include wind speed, country, and ISO timestamps. Also added a `--json-only` flag to suppress human-readable lines.  
+**Skills learned:** JSON/CSV outputs in Node, extending objects, optional chaining, formatting timestamps.  
+**Deliverables:** `weather_cli.js` (final version with all flags).
+
+/*
+BIG PICTURE — weather_cli.js
+
+1) Imports & setup
+   - Load libs, rebuild __dirname, load .env next to this file
+
+2) Config & flags
+   - Read OPENWEATHER_API_KEY
+   - Parse CLI: --units, --json, --csv-out; positional city names
+
+3) Fetch function
+   - Given a city, call OpenWeather, shape a normalized result { ok, city, temp, ... }
+
+4) Run all requests
+   - Promise.all(...) to fetch all cities in parallel
+
+5) Output
+   - Human-readable lines
+   - Optional: JSON (--json)
+   - Optional: CSV (--csv-out)
+*/
+
