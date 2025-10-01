@@ -49,4 +49,7 @@ BIG PICTURE — weather_cli.js
    - Optional: CSV (--csv-out)
 */
 
-- **Day 17 (W3D3)** — Added `--cache-day` (per-day cache file), plus wind speed and ISO timestamps in outputs. Verified JSON-only export and CSV export.
+## Day 17 (W3D3)
+I added a simple daily cache so repeat runs don’t hit the API. I also extended outputs with wind speed and ISO timestamps. 
+
+Tested `--json-only`, `--json-out`, and `--csv-out`. The CLI now feels fast and reusable.
