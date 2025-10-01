@@ -49,3 +49,4 @@ BIG PICTURE — weather_cli.js
    - Optional: CSV (--csv-out)
 */
 
+- **Day 17 (W3D3)** — Added `--cache-day` (per-day cache file), plus wind speed and ISO timestamps in outputs. Verified JSON-only export and CSV export.
