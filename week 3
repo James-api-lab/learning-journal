@@ -53,3 +53,23 @@ BIG PICTURE — weather_cli.js
 I added a simple daily cache so repeat runs don’t hit the API. I also extended outputs with wind speed and ISO timestamps. 
 
 Tested `--json-only`, `--json-out`, and `--csv-out`. The CLI now feels fast and reusable.
+
+# Week 3 – Day 18 (W3D4)
+
+## What I Worked On
+- Added **error hinting** to `fetchCity` so that API errors (401 Unauthorized, 404 Not Found, 429 Too Many Requests) return structured error messages instead of silent failures.
+- Sketched out **tests** for each error case, so I know how to validate behavior when the API fails or limits requests.
+- Confirmed CSV is in **append mode** and the run log tracks every execution.
+- Cleaned up the code with the `--quiet` flag wrapping non-essential logs.
+
+## What I Learned
+- How to return structured objects in JS (`{ ok: false, error: ... }`) to make downstream logic easier to handle.
+- Why appending CSV and logging runs is useful for history, debugging, and data tracking.
+- How Git rebasing works when my local branch is behind the remote.
+- Gained confidence working in Node.js even though it’s new territory.
+
+## Next Steps
+- Start adding **unit tests** with Jest for error cases.
+- Refactor the CLI into smaller modules (`fetch.js`, `cache.js`, `output.js`).
+- Keep updating the README with testing instructions and usage examples.
+
