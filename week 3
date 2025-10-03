@@ -73,3 +73,36 @@ Tested `--json-only`, `--json-out`, and `--csv-out`. The CLI now feels fast and 
 - Refactor the CLI into smaller modules (`fetch.js`, `cache.js`, `output.js`).
 - Keep updating the README with testing instructions and usage examples.
 
+
+
+Learning Journal — Week 3, Day 5 (W3D5 / Day 19)
+What I Did
+- Added error hinting support to the weather CLI with a new src/hintForError.js module.
+- Wrote unit tests with Jest to validate both fetchCity (API success/failure cases) and hintForError (status → human hint mapping).
+- Debugged Jest configuration for ESM mode:
+- Set "type": "module" in package.json.
+- Updated the test script to use node --experimental-vm-modules.
+- Ensured tests import Jest globals from @jest/globals.
+- Fixed import/export mismatches (export async function fetchCity vs missing default exports).
+- Created a run log inside logs/weather_runs.csv and ensured the CSV output file is in append mode.
+- Cleaned up repo: committed changes with git pull --rebase flow to resolve remote conflicts.
+
+What I Learned
+- Testing in Node.js is different than in Python:
+- Jest requires explicit setup for ESM (--experimental-vm-modules).
+- Imports must match exports exactly — no auto-magic like Python.
+- Tests need at least one it(...) block, otherwise Jest errors out.
+- I now understand the purpose of tests:
+- They simulate success/failure so I don’t have to wait for API errors in real runs. This makes the CLI more resilient.
+- Learned how to add a helper module (hintForError) for better UX — turning raw API errors into human-readable hints.
+- Reinforced Git best practices:
+- Always pull with --rebase before pushing if remote has new commits.
+- Fix conflicts locally, then push again.
+
+Next Steps (W3D6+)
+- Add more test coverage:
+- Test CSV append logic.
+- Test caching behavior (--cache-day).
+- Try running tests in CI (GitHub Actions).
+
+Begin planning next week’s project: moving toward FastAPI + service structure.
