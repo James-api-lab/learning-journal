@@ -106,3 +106,29 @@ Next Steps (W3D6+)
 - Try running tests in CI (GitHub Actions).
 
 Begin planning next week’s project: moving toward FastAPI + service structure.
+
+
+### Learning Journal — Weather CLI Chart Migration
+
+**What I did**
+- Replaced `chartjs-node-canvas` (native bindings) with `quickchart-js`, which works cleanly with Node.js v22 and avoids painful canvas install issues.
+- Added two major features:
+  1. `--chart-type` → supports both bar (snapshot) and line (historical trend).
+  2. `--chart-from-csv` → allows chart generation from existing CSV logs without new API calls.
+- Fixed CSV parsing logic so that boolean values (`true` vs `"true"`) don’t break.
+- Implemented city-based grouping for line charts.
+
+**Why I did it**
+- Native canvas libraries were breaking under Node v22 (string conversion errors).
+- Needed a stable charting backend that doesn’t rely on system-level builds.
+- Wanted to visualize weather trends over time, not just current snapshots.
+
+**Impact**
+- Charts are now much more reliable and portable.
+- Added flexibility: can visualize past data without hitting the API.
+- Simplified dev setup: no native module headaches, faster install.
+
+**Outcome**
+- CLI is now production-friendly: daily CSV logging, reliable charts, cache, and summaries.
+- More extensible foundation: I can later add rolling averages, anomaly detection, or export charts to the web.
+- Learned the value of swapping libraries when friction is too high—QuickChart solved problems instantly compared to fighting `canvas`.
