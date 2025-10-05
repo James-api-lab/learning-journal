@@ -1,0 +1,53 @@
+
+---
+
+## 📘 Learning Journal — Week 4, Day 1
+
+BACK IN PYTHON BABY! It is crazy how much more comfortable I feel with it. 
+
+**Theme:** Flask API Foundations — from CLI scripts to running a local microservice.
+
+---
+
+### 🎯 Goal
+Transition from standalone Python CLI scripts to a **web-accessible Flask API** that returns structured JSON responses and supports modular endpoints.
+
+---
+
+### 🧩 What I Built
+- **Flask API App (`app.py`)**  
+  - Core routes: `/`, `/health`, `/meta`, `/demo`  
+  - Structured logging via `RotatingFileHandler`  
+  - Environment configuration with `.env`  
+  - JSON-only error responses (404 + 500 handlers)  
+  - Dynamic metadata (`app.config["VERSION"]`)
+
+- **Testing endpoints:**  
+  - Used PowerShell’s `iwr` and `curl.exe` to verify routes.  
+  - Confirmed proper 200, 404, and 500 JSON payloads.
+
+---
+
+### 💡 Key Concepts Learned
+- Flask route decorators and HTTP methods (`@app.route()`)
+- Handling configuration cleanly with `.env` + `dotenv`
+- Safe error handling — returning consistent JSON on crashes
+- Rotating logs for persistent, production-like monitoring
+- GitHub push protection (and how to safely remove secrets!)
+- Managing environment files securely (`.gitignore`, `.env.example`)
+- Structuring a project for future FastAPI or microservice conversion
+
+---
+
+### 🧠 Reflections
+This day felt like crossing a bridge from **scripts** → **services**.  
+Seeing the JSON responses in the browser or terminal made the logic tangible. I also hit my first real-world problem — GitHub push protection due to committed secrets — and learned how to rewrite Git history safely using `git filter-repo`.
+
+---
+
+### ✅ Next Steps (W4D2 Preview)
+- Add `/weather` route powered by OpenWeather API (using the key in `.env`)
+- Return live JSON with city, temperature, and condition
+- Test with multiple city parameters (`?city=Seattle`)
+- Log API calls and response times in `/data/access.log`
+
