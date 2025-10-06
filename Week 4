@@ -51,3 +51,42 @@ Seeing the JSON responses in the browser or terminal made the logic tangible. I 
 - Test with multiple city parameters (`?city=Seattle`)
 - Log API calls and response times in `/data/access.log`
 
+
+# Week 4 Day 1, again — Flask Foundations Journal
+
+### Date
+
+October 5, 2025
+
+### Theme
+
+Flask Foundations: Building and Serving Your First API
+
+### Summary
+
+Today marked a reset and a fresh start for my API learning journey — literally. I had to delete my original Week 4 folder and start over after a messy GitHub setup with push protection issues and environment variable leaks. I committed all of my APIs - fun times. While frustrating, it was also an important learning moment about version control hygiene, environment safety, and patience.
+
+I partially rebuilt my **Week 4 - Flask API** project from scratch, reconnected GitHub cleanly under my **James-api-lab** organization, and successfully pushed my foundational files — `app.py`, `config.py`, and `README.md`. This time, I followed a step-by-step, no-rush approach that ensured each step worked before moving on.
+
+### What I Accomplished
+
+* ✅ Created a clean new project folder under `Learning APIs/Week 4 - Flask API`.
+* ✅ Initialized a new Git repo and added `.gitignore` and `.env.example` safely.
+* ✅ Authenticated via GitHub CLI and pushed the repo to my organization.
+* ✅ Copied in and committed key files: `app.py`, `config.py`, `README.md`.
+* ✅ Verified Flask runs locally and returns `{"message": "Week 4 Flask API is live"}`.
+
+### Lessons Learned
+
+* Secrets and `.env` files should **never** be tracked in Git. Even one mistake can block pushes.
+* Starting clean sometimes saves more time than debugging a broken setup.
+* GitHub CLI (`gh`) is much more reliable than manual HTTPS setup once properly authenticated.
+* I understand how to structure and protect a Flask project more confidently now.
+
+### Next Steps
+
+Tomorrow, I’ll move into **Day 2**, learning how to use **path parameters** and **query parameters** in Flask routes. I’ll make sure the explanations include both what to do *and why* — to reinforce conceptual understanding.
+
+### Reflection
+
+Today’s reset felt like a small failure but turned into one of my best real-world learning experiences yet. Version control, security, and good project hygiene are as much a part of being a developer as writing the code itself. I’m ending the day with a clean project, clear mind, and a running Flask API.
