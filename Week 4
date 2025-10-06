@@ -90,3 +90,76 @@ Tomorrow, I’ll move into **Day 2**, learning how to use **path parameters** an
 ### Reflection
 
 Today’s reset felt like a small failure but turned into one of my best real-world learning experiences yet. Version control, security, and good project hygiene are as much a part of being a developer as writing the code itself. I’m ending the day with a clean project, clear mind, and a running Flask API.
+
+----
+
+
+# Week 4 — Days 1–2 Journal
+
+**Dates:** Oct 5, 2025 (restart); continues into Day 2  
+**Theme:** Flask foundations → path/query/body inputs
+
+---
+
+## What happened (honest version)
+
+I borked my first attempt: leaked `.env` once, which tripped GitHub push protection.  
+Tried to clean history; it got messier. I deleted the repo/folder and restarted clean.  
+This time I created a clean project, added `.gitignore` and `.env.example` first, and used `gh repo create` in my org.
+
+---
+
+## What I built
+
+- Base Flask app with:
+  - `/`, `/health`, `/meta`
+  - JSON 404 + 500 handlers
+  - Request logging (rotating file + simple access log)
+- Day 2 routes:
+  - Path params: `/hello/<name>`, `/square/<int:n>`
+  - Query params: `/add?a=5&b=9` with validation
+  - POST JSON: `POST /echo` echoes body
+
+---
+
+## What I learned (and re-learned)
+
+- **Path vs Query vs Body**:
+  - Path = identity (`/users/42`)
+  - Query = options/filters (`?limit=10&sort=asc`)
+  - Body = actual data for create/update (JSON for POST/PUT)
+- **PowerShell quirks**:
+  - Use `curl.exe` (not `curl`) and **quote** URLs with `&`.
+  - Send JSON with **single quotes** around the payload or use `Invoke-WebRequest`.
+- **Errors matter**:
+  - 400 for bad input (missing/invalid params)
+  - 404 for wrong route
+  - 500 for crashes, but return clean JSON
+- **Git hygiene**:
+  - Don’t commit `.env`—ever.
+  - Starting over can be faster (and cleaner) than wrestling a broken history.
+
+---
+
+## What didn’t work
+
+- Sending POST JSON from PowerShell was finicky at first (quoting).  
+  Fixed by using:  
+  `curl.exe -X POST ... -d '{"msg":"hi"}'`  
+  or `Invoke-WebRequest` with `-ContentType "application/json"`.
+
+---
+
+## Next
+
+- Day 3: wire `/weather/<city>` to OpenWeather (env key only in local `.env`).
+- Day 4: CSV history endpoint.
+- Day 5: POST validation and structured errors.
+
+---
+
+## Reflection
+
+I messed up, owned it, and rebuilt it better.  
+The restart forced me to understand the workflow deeply: environment safety, GitHub org permissions, and the shape of real APIs.  
+I’m moving forward with a clean project and clearer mental model.
