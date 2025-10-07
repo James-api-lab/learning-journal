@@ -163,3 +163,76 @@ This time I created a clean project, added `.gitignore` and `.env.example` first
 I messed up, owned it, and rebuilt it better.  
 The restart forced me to understand the workflow deeply: environment safety, GitHub org permissions, and the shape of real APIs.  
 I’m moving forward with a clean project and clearer mental model.
+
+# Week 4 — Day 3  
+**Project:** Flask API  
+**Focus:** Real API Integration + Data Persistence
+
+---
+
+## 🌤️ Overview
+After building our foundational Flask routes and JSON responses, today was about **making the API real** — connecting to a live data source (OpenWeather), caching results, logging data, and handling real-world errors gracefully.
+
+We started with `/weather/<city>` for a single-city lookup and expanded into `/weather?cities=Seattle,Tokyo,Paris` for bulk fetching, powered by concurrent threads.  
+
+---
+
+## 🧩 Key Achievements
+
+### 1. Integrated a Live API
+- Connected Flask to the **OpenWeather API** using an API key stored in `.env`.
+- Added `.env` loading with `Path(__file__).with_name(".env")` for reliable Windows behavior.
+- Normalized payloads so every response includes:
+  ```json
+  {
+    "city": "Seattle",
+    "units": "metric",
+    "temp": 12.4,
+    "humidity": 80,
+    "description": "light rain",
+    "wind_speed": 3.4,
+    "ts": "2025-10-06T22:01:00Z",
+    "cache": false
+  }
+
+2. Implemented Smart Caching
+
+Built a lightweight in-memory cache (_weather_cache) with a 5-minute TTL.
+Cache-first lookups prevent unnecessary API calls.
+Cached entries are automatically cleaned up after expiration.
+
+3. Logged Everything
+
+Rotating log file (logs/app.log) for detailed runtime logs.
+Plain text access log (data/access.log) for quick request audits.
+CSV data log (data/weather_log.csv) for weather history persistence.
+
+4. Bulk & Concurrent Fetches
+
+Added /weather?cities=Seattle,New%20York,Paris&units=metric
+Parallelized requests with ThreadPoolExecutor while respecting API rate limits.
+Combined results + errors into a single clean JSON payload:
+
+{
+  "units": "metric",
+  "count": 2,
+  "results": [ ... ],
+  "errors": [ { "city": "NopeCity", "code": 404 } ]
+}
+
+5. Graceful Error Handling
+
+Added structured JSON error handlers for:
+400 → Bad query or missing params
+404 → Invalid routes
+500 → Server exceptions
+502 → Upstream API failure (network or rate limit)
+Implemented safe exception logging with app.logger.exception.
+
+🧠 Lessons Learned
+
+Load order matters: .env must be loaded before importing Config.
+UTC timestamps are crucial for multi-user environments — datetime.now(timezone.utc) futureproofs your data.
+Concurrent APIs need safeguards: Thread pools with capped worker limits prevent rate-limit bans.
+Caching adds realism: Even a simple TTL cache simulates production behavior and improves local performance.
+Always log structured data: JSON + CSV logs make debugging and analysis painless later.
