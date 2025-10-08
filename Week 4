@@ -236,3 +236,10 @@ UTC timestamps are crucial for multi-user environments — datetime.now(timezone
 Concurrent APIs need safeguards: Thread pools with capped worker limits prevent rate-limit bans.
 Caching adds realism: Even a simple TTL cache simulates production behavior and improves local performance.
 Always log structured data: JSON + CSV logs make debugging and analysis painless later.
+
+
+## 📘 Learning Journal — Week 4, Day 3
+
+I finally started connecting the dots with a basic html file in the browser.
+
+I had some trouble again with github, and some issues with the data. I am trying to make the literal and mental connection of query (CLI for now) -> API call -> browser output for user. 
