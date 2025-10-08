@@ -243,3 +243,35 @@ Always log structured data: JSON + CSV logs make debugging and analysis painless
 I finally started connecting the dots with a basic html file in the browser.
 
 I had some trouble again with github, and some issues with the data. I am trying to make the literal and mental connection of query (CLI for now) -> API call -> browser output for user. 
+
+## What I Built
+Today’s focus was making my Flask app feel *alive* — pulling live weather data, saving it, and generating charts from my own logs.
+
+I implemented:
+- `/weather/<city>` and `/weather?cities=` for live fetches.
+- CSV logging (`data/weather_log.csv`) so each API call becomes historical data.
+- A lightweight in-memory cache with 5-minute TTL.
+- `/history`, `/history/daily`, and `/chart/view` endpoints that visualize past results using QuickChart.
+
+After testing with:
+```powershell
+iwr "http://127.0.0.1:5000/weather/Seattle"
+iwr "http://127.0.0.1:5000/weather/Miami"
+```
+my charts started showing historical temperatures, humidity, and trends.
+
+---
+
+## Reflections
+- I finally felt the jump from “toy CLI” to “real API.”
+- Debugging `.env` paths and cache invalidation taught me how fragile environment setup can be.
+- Seeing my own API feed QuickChart URLs felt like a real full-stack moment.
+- Git gave me hell again (nested repos), but I learned how to flatten and re-push.
+
+---
+
+## Next Steps
+- Clean up chart endpoints (combine `/chart/html` + `/chart/view`)
+- Add daily aggregation & rolling averages
+- Begin packaging for deploy (Flask app factory pattern)
+
