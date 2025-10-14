@@ -1,0 +1,30 @@
+# 🧱 Week 5 Learning Journal — Flask CRUD + Persistence
+*Learning APIs Project*
+
+---
+
+## 🗓 Week Overview
+**Goal:** Learn how APIs store, read, update, and delete data using Flask + SQLite + SQLAlchemy.
+
+---
+
+## 🧩 Day 1 — Persistence Foundations
+**Focus:** What does “saving data” actually mean?
+
+**What I did**
+- Created project folder and virtual env  
+- Installed Flask, SQLAlchemy, dotenv, pytest  
+- Verified `/health` route  
+- Fixed SQLite path errors with absolute path logic  
+
+**What I learned**
+- Persistence = data living beyond a single run  
+- ORMs translate Python ↔ SQL so you don’t write raw queries  
+- `commit()` makes data permanent  
+
+**Challenges**
+- “Unable to open database file” → fixed via `config.py` path builder  
+- PowerShell curl alias confusion  
+
+**Next Step**
+- Implement Create + Read routes tomorrow
