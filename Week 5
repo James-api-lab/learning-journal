@@ -28,3 +28,30 @@
 
 **Next Step**
 - Implement Create + Read routes tomorrow
+
+## 🧩 Day 2 — Create + Read Deep Dive
+
+**Focus:** Adding validation and data integrity to the API.
+
+**What I did**
+- Enhanced `/records` POST to validate input fields (`city`, `temp`, `humidity`).
+- Added consistent JSON error responses for invalid data.
+- Tested different POST scenarios in PowerShell using `Invoke-WebRequest` and `Invoke-RestMethod`.
+
+**What I learned**
+- Validation is what separates hobby projects from production code.
+- PowerShell and `curl.exe` handle JSON quoting differently — an important cross-platform lesson.
+- Error responses should be predictable (always JSON, always include an `error` key).
+
+**Challenges**
+- Frustration with JSON quoting and `curl` syntax.
+- Understanding why Flask rejected certain requests helped clarify how request bodies are parsed.
+- The learning felt slow, but it reinforced core API behaviors (status codes, contracts).
+
+**Next Step**
+- Implement `PUT` and `DELETE` routes to complete the CRUD cycle.
+- Add safeguards so updates and deletions are intentional and confirmed.
+
+**Mood Check**
+Slightly underwhelmed today — this part feels repetitive, but it’s the groundwork for professional-grade APIs. I’m getting more confident with Flask, SQLAlchemy, and structured testing.
+
