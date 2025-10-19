@@ -99,3 +99,23 @@ Mood check: generally pretty furstrated but mainly because git commands.
 - Added tests for empty + populated DB; configured pytest to find `app`.
 - Takeaway: aggregate in SQL, serve in JSON; keep seeding reproducible.
 
+## 🧱 Week 5 Day 5 — Logging & Error Hygiene  
+
+**Goal:**  
+Make the API production-ready by adding *visibility* (logs) and *predictability* (consistent JSON errors).
+
+---
+
+### 🧠 What I Learned  
+
+- **Logging is observability.**  
+  Every request now records its method, path, status, IP, and duration in `logs/app.log`.  
+  I can finally *see* what’s happening inside my API—like a flight recorder for Flask.
+
+- **Error consistency builds trust.**  
+  Both `404` and `500` now return JSON objects instead of raw HTML, e.g.:  
+  ```json
+  {"error": "Not Found"}
+  {"error": "Internal Server Error"}
+
+
