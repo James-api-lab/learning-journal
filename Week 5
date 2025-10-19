@@ -91,3 +91,11 @@ Slightly underwhelmed today — this part feels repetitive, but it’s the groun
 - Test with `curl -i` to see status + `Content-Type` and confirm JSON responses.
 
 Mood check: generally pretty furstrated but mainly because git commands. 
+
+
+## Day 4 — Stats, Seeding, SQL Thinking
+- Wrote idempotent `scripts/seed.py` (safe to run multiple times).
+- Verified `/records/stats` aggregates with `func.avg`, `func.count` (DB does the math).
+- Added tests for empty + populated DB; configured pytest to find `app`.
+- Takeaway: aggregate in SQL, serve in JSON; keep seeding reproducible.
+
