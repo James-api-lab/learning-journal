@@ -55,3 +55,39 @@
 **Mood Check**
 Slightly underwhelmed today — this part feels repetitive, but it’s the groundwork for professional-grade APIs. I’m getting more confident with Flask, SQLAlchemy, and structured testing.
 
+## Day 3 — Update & Delete (CRUD U/D)
+
+**What I built**
+- Added `PUT /records/<id>` to update fields (`city`, `temp`, `humidity`).
+- Added `DELETE /records/<id>` to remove a record.
+- Added a global `@app.errorhandler(404)` so **all** 404s return JSON (no HTML pages).
+
+**Why it matters**
+- Clients need predictable error shapes. JSON 404s make programmatic handling easy.
+- `db.session.commit()` is the “save point” for data—mirrors how `git commit` saves code.
+- Idempotence: `DELETE` can be safely retried; `PUT` leads to a known final state.
+
+**What I tested**
+- Update success:
+  - `PUT /records/1` with `{"city":"Seattle (Updated)","temp":19}` → `200` + updated JSON.
+- Delete success:
+  - `DELETE /records/<id>` for an existing id → `200` + confirmation message.
+- Missing resource (defensive cases):
+  - `PUT /records/999999` → `404` + `{"error":"Not Found"}` (or `{"error":"record not found"}` if from route).
+  - `DELETE /records/999999` → `404` + JSON error.
+- Verified collection:
+  - `GET /records/` shows current rows.
+
+**Mental model connections**
+- CRUD in the API ↔ change management in Git:
+  - Update data → `PUT` ↔ edit file → `git commit`
+  - Delete data → `DELETE` ↔ `git rm` → `git commit`
+- Route not found vs resource not found:
+  - Route-miss 404 (framework) now returns JSON via the global handler.
+  - Resource-miss 404 (handled in route) also returns JSON consistently.
+
+**Gotchas I learned**
+- Restart the dev server after editing routes (so Flask loads new code).
+- Test with `curl -i` to see status + `Content-Type` and confirm JSON responses.
+
+Mood check: generally pretty furstrated but mainly because git commands. 
