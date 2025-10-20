@@ -211,3 +211,49 @@ All of them will reuse the same pattern you built today:
 > `pytest + test_client → confidence + speed.`
 
 
+## Week 5 - Day 6
+
+## 🗓️ What I Did
+Today I introduced automated testing into my Flask CRUD app using `pytest` and Flask’s `test_client`.
+At first, my delete test failed with a *“working outside of application context”* error — this forced me to understand how Flask manages database sessions through its **application context**.
+I rewrote the tests to be **API-driven** (using real HTTP requests) instead of touching the database directly, and everything passed.
+
+---
+
+## 🔍 What I Learned
+
+| Concept | Description |
+|----------|--------------|
+| **App Context** | Flask isolates resources like `db.session` inside an *application context*. Anything outside that context won’t know which app or request it belongs to. |
+| **Flask Test Client** | Lets me call routes (`POST /records`, `DELETE /records/1`) inside tests without running the actual server. |
+| **API-Driven Tests** | Simulate real client behavior instead of directly modifying the database. This is closer to how the API will be used in production. |
+| **Test Isolation** | Each test starts with a clean database using `db.drop_all()` + `db.create_all()`, so results are consistent. |
+| **Safety Net for Refactors** | With tests in place, I can change code confidently and prove that endpoints still behave correctly. |
+
+---
+
+## 🧩 Why It Matters
+This was the first time I truly *trusted* my API.
+Instead of manually cURLing every route, I can now run one command (`pytest -q`) and instantly see if anything broke.
+It also built intuition for how frameworks like FastAPI or Django manage their own contexts — the same concepts will carry over.
+
+Automated tests are what turn scripts into software.
+
+---
+
+## 💡 Key Takeaways
+- Every route can be tested like a black-box system: send a request, assert on the JSON.  
+- The application context is the invisible boundary that keeps Flask apps predictable.  
+- Writing tests makes debugging 10× faster because failures point exactly to broken assumptions.  
+- Good tests don’t just verify code — they **teach** you how your system behaves.
+
+---
+
+## 🔗 How It Connects
+In future projects:
+- **PathTwo** → verify financial inputs calculate the right savings rates.  
+- **Recap Games** → test that recap generation endpoints return structured JSON before rendering UI.  
+- **Garden Companion** → ensure POSTing a new plant actually persists across sessions.  
+
+All of them will reuse the same pattern you built today:  
+> `pytest + test_client → confidence + speed.`
